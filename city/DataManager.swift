@@ -8,18 +8,18 @@
 
 import Foundation
 
-let CityImage = "http://www.reddit.com/r/CityPorn.json"
+let CityImage = "http://www.reddit.com/r/CityPorn.json?limit=100"
 
 class DataManager {
     
     
-    class func getTopImagesFromCityPornWithSuccess(success: ((iTunesData: NSData!) -> Void)) {
+    class func getTopImagesFromCityPornWithSuccess(success: ((redditData: NSData!) -> Void)) {
         //1
         loadDataFromURL(NSURL(string: CityImage)!, completion:{(data, error) -> Void in
             //2
             if let urlData = data {
                 //3
-                success(iTunesData: urlData)
+                success(redditData: urlData)
             }
         })
     }

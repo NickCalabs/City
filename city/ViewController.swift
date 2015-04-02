@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func test(sender: AnyObject) {
-        let url = NSURL(string: URLarr[1])
+        let url = NSURL(string: URLarr[25])
         let data = NSData(contentsOfURL: url!)
         cityImage.image = UIImage(data: data!)
     }
