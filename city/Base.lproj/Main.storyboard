@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -32,7 +32,7 @@
                                     <action selector="test:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="OxC-fd-VFt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-vY-hhi">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-vY-hhi">
                                 <rect key="frame" x="97" y="531" width="160" height="30"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.20392156859999999" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -66,6 +66,7 @@
                             <constraint firstItem="LQh-4c-fq4" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="80" id="6Vp-No-YeA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Rzi-l3-4oC" secondAttribute="trailing" constant="31" id="LaI-KR-486"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Rzi-l3-4oC" secondAttribute="bottom" constant="171" id="MVk-8c-mst"/>
+                            <constraint firstAttribute="width" secondItem="vHj-vY-hhi" secondAttribute="width" id="SNx-lJ-oaw"/>
                             <constraint firstItem="Rzi-l3-4oC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="X2k-NM-qja"/>
                             <constraint firstItem="eYy-OD-Eou" firstAttribute="top" secondItem="Rzi-l3-4oC" secondAttribute="bottom" constant="50" id="jEo-Ps-dic"/>
                             <constraint firstItem="LQh-4c-fq4" firstAttribute="top" secondItem="Rzi-l3-4oC" secondAttribute="bottom" constant="50" id="jIe-A7-PnP"/>

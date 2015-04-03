@@ -26,14 +26,6 @@ class DataManager {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
     class func loadDataFromURL(url: NSURL, completion:(data: NSData?, error: NSError?) -> Void) {
         var session = NSURLSession.sharedSession()
         
