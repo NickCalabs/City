@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     
     var URLarr:[String] = []
     var titlearr:[String] = []
-    var picAndTitle:[(pic:String?, title:String?)] = []
-    var objs:[Data] = []
+    var picAndTitle:[(String,String)] = []
+    var dataArray:[Dictionary<String,String>] = [] //possibly to be used
     
     //var cities = [String: String]()
     
@@ -36,28 +36,27 @@ class ViewController: UIViewController {
             let json = JSON(data:redditData)
             
             for (var i = 0; i < 500; i++){
-                var obj = Data()
                 if let cityPic = json["data"]["children"][i]["data"]["url"].stringValue as String? {
                     if cityPic.rangeOfString("http://i.") != nil || cityPic.rangeOfString(".jpg") != nil {
                         if let cityTitle = json["data"]["children"][i]["data"]["title"].stringValue as String? {
                             //println("Title: \(cityTitle)")
-                            //self.picAndTitle[i].title = cityTitle
-                            //self.picAndTitle.append(pic:, title: cityTitle)
                             self.titlearr.append(cityTitle)
-                            obj.title = cityTitle
                         }
                         //println("NSURLSession: \(cityPic)")
                         self.URLarr.append(cityPic)
-                        //self.picAndTitle.append(pic:cityPic, title: )
-                        obj.pic = cityPic
                     }
                 }
-                self.objs.append(obj)
             }
         }
         
 
         
+    }
+    
+    func groupData(){
+        for (var i = 0; i < self.URLarr.count; i++){
+            self.picAndTitle[i] = (self.URLarr[i], self.titlearr[i])
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,8 +68,12 @@ class ViewController: UIViewController {
         let url = NSURL(string: URLarr[3])
         let data = NSData(contentsOfURL: url!)
         cityImage.image = UIImage(data: data!)
-        println(objs)
+        
+        self.groupData()
+        println(self.picAndTitle)
     }
+    
+    
     
     
    
