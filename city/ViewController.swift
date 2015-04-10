@@ -53,11 +53,11 @@ class ViewController: UIViewController {
         
     }
     
-    func groupData(){
-        for (var i = 0; i < self.URLarr.count; i++){
-            self.picAndTitle[i] = (self.URLarr[i], self.titlearr[i])
-        }
-    }
+//    func groupData(){
+//        for (var i = 0; i < self.URLarr.count; i++){
+//            self.picAndTitle[i] = (self.URLarr[i], self.titlearr[i])
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         let data = NSData(contentsOfURL: url!)
         cityImage.image = UIImage(data: data!)
         
-        self.groupData()
+//        self.groupData()
         println(self.picAndTitle)
     }
     
