@@ -9,11 +9,6 @@
 import Foundation
 
 struct Data {
-    var URLarr:[String] = []
-    var titlearr:[String] = []
-    
-//    init(url:String, title:String){
-//        URLarr = url
-//        titlearr = title
-//    }
+    var URLarr:String
+    var titlearr:String
 }

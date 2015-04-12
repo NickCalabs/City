@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var titlearr:[String] = []
     var picAndTitle:[(String,String)] = []
     var dataArray:[Dictionary<String,String>] = [] //possibly to be used
+    var dataList:[Data] = []
     
     //var cities = [String: String]()
     
@@ -41,29 +42,20 @@ class ViewController: UIViewController {
     }
     
     func loadJSON() {
-        
-        var pics:[String] = []
-        var title:[String] = []
-        
         DataManager.getTopImagesFromCityPornWithSuccess { (redditData) -> Void in
             let json = JSON(data:redditData)
-            
+            var obj = Data(URLarr: "", titlearr: "")
             for (var i = 0; i < 500; i++){
                 if let cityPic = json["data"]["children"][i]["data"]["url"].stringValue as String? {
                     if cityPic.rangeOfString("http://i.") != nil || cityPic.rangeOfString(".jpg") != nil {
                         if let cityTitle = json["data"]["children"][i]["data"]["title"].stringValue as String? {
-                            title.append(cityTitle)
+                            obj.titlearr = cityTitle
                         }
-                        pics.append(cityPic)
+                        obj.URLarr = cityPic
                     }
                 }
             }
-        }
-        
-        
-        
-        for (var i = 0; i < pics.count; i++) {
-            self.dataArray[i] = [pics[i]: title[i]]
+            self.dataList.append(obj)
         }
         
     }
@@ -84,7 +76,7 @@ class ViewController: UIViewController {
 //        println(self.titlearr)
 //        println(self.picAndTitle)
         
-        println(self.dataArray)
+        println(self.dataList)
     }
    
 }
