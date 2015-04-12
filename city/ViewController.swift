@@ -31,6 +31,19 @@ class ViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.24, green:0.28, blue:0.31, alpha:1)
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
+        loadJSON()
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func loadJSON() {
+        
+        var pics:[String] = []
+        var title:[String] = []
         
         DataManager.getTopImagesFromCityPornWithSuccess { (redditData) -> Void in
             let json = JSON(data:redditData)
@@ -39,43 +52,40 @@ class ViewController: UIViewController {
                 if let cityPic = json["data"]["children"][i]["data"]["url"].stringValue as String? {
                     if cityPic.rangeOfString("http://i.") != nil || cityPic.rangeOfString(".jpg") != nil {
                         if let cityTitle = json["data"]["children"][i]["data"]["title"].stringValue as String? {
-                            //println("Title: \(cityTitle)")
-                            self.titlearr.append(cityTitle)
+                            title.append(cityTitle)
                         }
-                        //println("NSURLSession: \(cityPic)")
-                        self.URLarr.append(cityPic)
+                        pics.append(cityPic)
                     }
                 }
             }
         }
         
-
+        
+        
+        for (var i = 0; i < pics.count; i++) {
+            self.dataArray[i] = [pics[i]: title[i]]
+        }
         
     }
     
 //    func groupData(){
-//        for (var i = 0; i < self.URLarr.count; i++){
+//        for (var i = 0; i < 5; i++){
 //            self.picAndTitle[i] = (self.URLarr[i], self.titlearr[i])
 //        }
 //    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func test(sender: AnyObject) {
-        let url = NSURL(string: URLarr[3])
-        let data = NSData(contentsOfURL: url!)
-        cityImage.image = UIImage(data: data!)
+//        let url = NSURL(string: URLarr[3])
+//        let data = NSData(contentsOfURL: url!)
+//        cityImage.image = UIImage(data: data!)
+//        
+//        //groupData()
+//        println(self.URLarr)
+//        println(self.titlearr)
+//        println(self.picAndTitle)
         
-//        self.groupData()
-        println(self.picAndTitle)
+        println(self.dataArray)
     }
-    
-    
-    
-    
    
 }
 
