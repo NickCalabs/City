@@ -8,7 +8,16 @@
 
 import Foundation
 
-struct Data {
-    var URLarr:String
-    var titlearr:String
+class Model: NSObject, Printable {
+    let cityName: String
+    let imageURL: String
+    
+    override var description: String {
+        return "Name: \(cityName), URL: \(imageURL)\n"
+    }
+    
+    init(cityName: String?, imageURL: String?) {
+        self.cityName = cityName ?? ""
+        self.imageURL = imageURL ?? ""
+    }
 }
