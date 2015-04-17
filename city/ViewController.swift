@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     var titlearr:[String] = []
     var picAndTitle:[(String,String)] = []
     var dataArray:[Dictionary<String,String>] = [] //possibly to be used
-    var dataList:[Data] = []
+    var data = [Model]()
     
     //var cities = [String: String]()
     
@@ -41,21 +41,35 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+//    func loadJSON() {
+//        DataManager.getTopImagesFromCityPornWithSuccess { (redditData) -> Void in
+//            let json = JSON(data:redditData)
+//            for (var i = 0; i < 500; i++){
+//                if let cityPic = json["data"]["children"][i]["data"]["url"].stringValue as String? {
+//                    if cityPic.rangeOfString("http://i.") != nil || cityPic.rangeOfString(".jpg") != nil {
+//                        if let cityTitle = json["data"]["children"][i]["data"]["title"].stringValue as String? {
+//                            
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
     func loadJSON() {
         DataManager.getTopImagesFromCityPornWithSuccess { (redditData) -> Void in
-            let json = JSON(data:redditData)
-            for (var i = 0; i < 500; i++){
-                if let cityPic = json["data"]["children"][i]["data"]["url"].stringValue as String? {
-                    if cityPic.rangeOfString("http://i.") != nil || cityPic.rangeOfString(".jpg") != nil {
-                        if let cityTitle = json["data"]["children"][i]["data"]["title"].stringValue as String? {
-                            
-                        }
-                    }
+            let json = JSON(data: redditData)
+            
+            if let redditArray = json["data"]["children"].arrayValue as Array? {
+                for redditDict in redditArray {
+                    var title: String? = redditDict["title"].stringValue
+                    var image: String? = redditDict["url"].stringValue
+                    
+                    var titleimage = Model(cityName: title, imageURL: image)
+                    self.data.append(titleimage)
                 }
             }
-            self.dataList.append(obj)
         }
-        
     }
     
 //    func groupData(){
@@ -73,8 +87,6 @@ class ViewController: UIViewController {
 //        println(self.URLarr)
 //        println(self.titlearr)
 //        println(self.picAndTitle)
-        
-        println(self.dataList)
     }
    
 }
