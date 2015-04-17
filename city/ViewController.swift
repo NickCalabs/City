@@ -44,14 +44,12 @@ class ViewController: UIViewController {
     func loadJSON() {
         DataManager.getTopImagesFromCityPornWithSuccess { (redditData) -> Void in
             let json = JSON(data:redditData)
-            var obj = Data(URLarr: "", titlearr: "")
             for (var i = 0; i < 500; i++){
                 if let cityPic = json["data"]["children"][i]["data"]["url"].stringValue as String? {
                     if cityPic.rangeOfString("http://i.") != nil || cityPic.rangeOfString(".jpg") != nil {
                         if let cityTitle = json["data"]["children"][i]["data"]["title"].stringValue as String? {
-                            obj.titlearr = cityTitle
+                            
                         }
-                        obj.URLarr = cityPic
                     }
                 }
             }
