@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityChoice2: UIButton!
     @IBOutlet weak var cityChoice3: UIButton!
     @IBOutlet weak var cityChoice4: UIButton!
+    var test: String = "Test var"
     
     var URLarr:[String] = []
     var titlearr:[String] = []
